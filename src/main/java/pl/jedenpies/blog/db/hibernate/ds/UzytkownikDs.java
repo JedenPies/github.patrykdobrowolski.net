@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "uzytkownicy")
-public class UzytkownikDs {
+public class UzytkownikDs implements HibernateIdentifiable {
 	
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)	
 	private Integer id;	

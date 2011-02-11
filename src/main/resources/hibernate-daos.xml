@@ -6,17 +6,31 @@
        "http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
         http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd">
 
-	<bean id="hibernateDaoFactory" class="pl.jedenpies.blog.db.hibernate.dao.HibernateDaoFactory"></bean>
+	<bean id="hibernateDaoFactory" class="pl.jedenpies.blog.db.hibernate.dao.factory.HibernateDaoFactory">
+		<property name="concreteFactories">
+			<map>
+				<entry>
+					<key><value>pl.jedenpies.blog.domain.Wpis</value></key>
+					<value>pl.jedenpies.blog.db.hibernate.dao.factory.HibernateWpisDaoFactory</value>
+				</entry>
+				<entry>
+					<key><value>pl.jedenpies.blog.domain.Uzytkownik</value></key>
+					<value>pl.jedenpies.blog.db.hibernate.dao.factory.HibernateUzytkownikDaoFactory</value>
+				</entry>
+			</map>
+		</property>
+	</bean>
 
 	<bean id="abstractDao" class="pl.jedenpies.blog.db.hibernate.dao.AbstractHibernateDao" abstract="true"></bean>
 
- 	<bean id="uzytkownikDao" class="pl.jedenpies.blog.db.hibernate.dao.HibernateUzytkownikDao" parent="abstractDao"></bean>
+ 	<bean id="uzytkownikDao" class="pl.jedenpies.blog.db.hibernate.dao.HibernateGenericDao" 
+ 		  factory-bean="hibernateDaoFactory" factory-method="createDao" parent="abstractDao">
+ 		<constructor-arg><value>pl.jedenpies.blog.domain.Uzytkownik</value></constructor-arg>	  
+	</bean>
  	
  	<bean id="wpisDao" class="pl.jedenpies.blog.db.hibernate.dao.HibernateGenericDao"
- 		  factory-bean="hibernateDaoFactory" factory-method="createDao">
- 		<constructor-arg>
- 			<value>pl.jedenpies.blog.domain.Wpis</value>
- 		</constructor-arg>	
+ 		  factory-bean="hibernateDaoFactory" factory-method="createDao" parent="abstractDao">
+ 		<constructor-arg><value>pl.jedenpies.blog.domain.Wpis</value></constructor-arg>	
  	</bean>
  		
  	

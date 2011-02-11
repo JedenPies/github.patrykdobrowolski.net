@@ -12,7 +12,7 @@ import pl.jedenpies.blog.tests.AbstractTest;
 public class UzytkownikDaoTest extends AbstractTest {
 
 	@Resource(name = "uzytkownikDao")
-	private UzytkownikDao uzytkownikDao;
+	private GenericDao<Uzytkownik> uzytkownikDao;
 	
 	@Test
 	@BeforeTransaction	

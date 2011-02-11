@@ -2,7 +2,7 @@ package pl.jedenpies.blog.domain;
 
 import pl.jedenpies.blog.util.MD5Encoder;
 
-public class Uzytkownik {
+public class Uzytkownik implements Identifiable {
 
 	private Integer id;
 	private String email;
