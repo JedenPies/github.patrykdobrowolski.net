@@ -2,18 +2,20 @@ package pl.jedenpies.blog.db.hibernate.ds;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+@Entity
 @Table(name = "wpisy")
 public class WpisDs {
 
-	@Id
-	private Integer id;
+	@Id		private Integer id;
 		
-	private Date data;
-	private String tytul;
-	private String tresc;
+	@Column	private Date data;
+	@Column	private String tytul;
+	@Column	private String tresc;
 	
 	public Date getData() {
 		return data;
@@ -35,6 +37,9 @@ public class WpisDs {
 	}
 	public Integer getId() {
 		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
 	}
 	
 }
