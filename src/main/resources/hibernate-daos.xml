@@ -6,8 +6,19 @@
        "http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
         http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd">
 
+	<bean id="hibernateDaoFactory" class="pl.jedenpies.blog.db.hibernate.dao.HibernateDaoFactory"></bean>
+
 	<bean id="abstractDao" class="pl.jedenpies.blog.db.hibernate.dao.AbstractHibernateDao" abstract="true"></bean>
 
  	<bean id="uzytkownikDao" class="pl.jedenpies.blog.db.hibernate.dao.HibernateUzytkownikDao" parent="abstractDao"></bean>
+ 	
+ 	<bean id="wpisDao" class="pl.jedenpies.blog.db.hibernate.dao.HibernateGenericDao"
+ 		  factory-bean="hibernateDaoFactory" factory-method="createDao">
+ 		<constructor-arg>
+ 			<value>pl.jedenpies.blog.domain.Wpis</value>
+ 		</constructor-arg>	
+ 	</bean>
+ 		
+ 	
 
 </beans>
