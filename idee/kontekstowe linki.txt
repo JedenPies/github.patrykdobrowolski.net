@@ -1,0 +1,1 @@
+Na stronie z wpisem pojawia siê komponent z linkami przefiltrowanymi pod k¹tem treœci lub tagów wpisu.

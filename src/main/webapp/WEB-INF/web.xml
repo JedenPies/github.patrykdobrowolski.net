@@ -1,0 +1,10 @@
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee" version="2.4"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http:/java.sun.com/dtd/web-app_2_3.dtd">
+ 
+  <context-param>
+    <param-name>log4jConfigLocation</param-name>
+	<param-value>/WEB-INF/classes/log4j.xml</param-value>
+  </context-param>
+ 
+</web-app>
